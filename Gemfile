@@ -73,3 +73,13 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+group :production do
+  gem "sd_notify"
+end
+
+gem "pry-rails"
+gem "dotenv-rails"
+gem "hirb"
+gem "hirb-unicode"
+gem "playwright-ruby-client"
