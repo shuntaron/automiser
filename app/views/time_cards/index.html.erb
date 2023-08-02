@@ -1,2 +1,40 @@
-<h1>TimeCards#index</h1>
-<p>Find me in app/views/time_cards/index.html.erb</p>
+<div class="min-h-screen bg-gray-100 flex items-center justify-center">
+  <div class="w-11/12 lg:w-3/4 bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-xl font-bold mb-4">勤怠管理画面</h1>
+    <p class="text-green-500 mb-4"><%= notice %></p>
+
+    <div class="mb-4 flex flex-row items-center justify-center">
+    <div id="time_cards">
+      <table class="w-full table-auto border-collapse border border-gray-300">
+        <thead>
+          <tr>
+            <th class="border border-gray-300">日付</th>
+            <th class="border border-gray-300">勤務予定</th>
+            <th class="border border-gray-300">勤務実績</th>
+            <th class="border border-gray-300">休憩</th>
+            <th class="border border-gray-300">休日</th>
+            <th class="border border-gray-300">申請状況</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300">
+              07月03日(月)
+            </td>
+            <td class="border border-gray-300">
+              09:00〜18:00
+            </td>
+            <td class="border border-gray-300">
+              09:00〜18:00
+            </td>
+            <td class="border border-gray-300">
+              12:00〜13:00
+            </td>
+            <td class="border border-gray-300"></td>
+            <td class="border border-gray-300"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
