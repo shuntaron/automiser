@@ -3,7 +3,11 @@
     <h1 class="text-xl font-bold mb-4">勤怠管理画面</h1>
     <p class="text-green-500 mb-4"><%= notice %></p>
 
-    <div class="mb-4 flex flex-row items-center justify-center">
+    <div class="mb-4 flex flex-row items-center justify-start">
+      <div class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 m-2 rounded">
+        <%= link_to "勤怠予実取得", scrape_time_cards_path, data: { turbo_method: :post } %>
+      </div>
+    </div>
     <div id="time_cards">
       <table class="w-full table-auto border-collapse border border-gray-300">
         <thead>
