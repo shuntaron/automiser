@@ -17,22 +17,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="border border-gray-300">
-              07月03日(月)
-            </td>
-            <td class="border border-gray-300">
-              09:00〜18:00
-            </td>
-            <td class="border border-gray-300">
-              09:00〜18:00
-            </td>
-            <td class="border border-gray-300">
-              12:00〜13:00
-            </td>
-            <td class="border border-gray-300"></td>
-            <td class="border border-gray-300"></td>
-          </tr>
+          <% @time_cards.each do |time_card| %>
+            <%= render time_card %>
+          <% end %>
         </tbody>
       </table>
     </div>

@@ -1,0 +1,35 @@
+<% wdays = ["日", "月", "火", "水", "木", "金", "土"] %>
+<tr id="<%= dom_id time_card %>">
+  <td class="border border-gray-300"><%= time_card.date.strftime('%m月%d日') + "(#{wdays[time_card.date.wday]})" if time_card.date %></td>
+  <td class="border border-gray-300">
+    <% if time_card.start_time_scheduled and time_card.end_time_scheduled %>
+      <div class="flex flex-row">
+        <div><%= time_card.start_time_scheduled.strftime('%H:%M') %></div>
+        〜
+        <div><%= time_card.end_time_scheduled.strftime('%H:%M') %></div>
+      </div>
+    <% else %>
+      -
+    <% end %>
+  </td>
+  <td class="border border-gray-300">
+    <% if time_card.start_time_actual and time_card.end_time_actual %>
+      <div class="flex flex-row">
+        <div><%= time_card.start_time_actual.strftime('%H:%M') %></div>
+        <div><%= time_card.end_time_actual.strftime('%H:%M') %></div>
+      </div>
+    <% else %>
+      -
+    <% end %>
+  </td>
+  <td class="border border-gray-300"><%= time_card.break_duration %></td>
+  <td class="border border-gray-300"><%= time_card.holiday_status %></td>
+  <td class="border border-gray-300">
+    <% if time_card.start_time_actual and time_card.end_time_actual %>
+      申請済
+    <% else %>
+      未申請
+      <%= time_card.application_status %>
+    <% end %>
+  </td>
+</tr>
