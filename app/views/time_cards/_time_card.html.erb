@@ -24,12 +24,5 @@
   </td>
   <td class="border border-gray-300"><%= time_card.break_duration %></td>
   <td class="border border-gray-300"><%= time_card.holiday_status %></td>
-  <td class="border border-gray-300">
-    <% if time_card.start_time_actual and time_card.end_time_actual %>
-      申請済
-    <% else %>
-      未申請
-      <%= time_card.application_status %>
-    <% end %>
-  </td>
+  <td class="border border-gray-300"><%= time_card.application_status %></td>
 </tr>
