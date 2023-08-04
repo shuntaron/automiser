@@ -78,7 +78,7 @@ group :production do
   gem "sd_notify"
 end
 
-gem "pry-rails"
+gem "pry-byebug"
 gem "dotenv-rails"
 gem "hirb"
 gem "hirb-unicode"
