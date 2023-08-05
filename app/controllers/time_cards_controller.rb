@@ -46,7 +46,7 @@ class TimeCardsController < ApplicationController
         end
       end
     end
-    redirect_to root_path, notice: "スクレイピングが成功しました"
+    redirect_to root_path, notice: "勤怠予実取得が成功しました"
   end
 
   def edit
@@ -55,4 +55,23 @@ class TimeCardsController < ApplicationController
   def bulk_edit
     @time_cards = TimeCard.all
   end
+  
+  def bulk_update
+    ids = time_cards_params.keys
+    attributes_array = time_cards_params.values
+    @time_cards = TimeCard.update(ids, attributes_array)
+    @time_cards.reject! { |p| p.errors.empty? }
+    if @time_cards.empty?
+      redirect_to bulk_edit_time_cards_path, notice: "勤怠手動更新が成功しました"
+    else
+      render "bulk_edit", alert: "勤怠手動更新が失敗しました"
+    end
+  end
+  
+  private
+  
+  def time_cards_params
+    params.require(:time_card).permit(time_cards: [:start_time_actual, :end_time_actual, :break_start_time, :break_end_time])[:time_cards]
+  end
+  
 end

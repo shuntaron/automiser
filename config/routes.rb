@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       post  :scrape
       get   :bulk_edit
+      patch :bulk_update
     end
   end
 end

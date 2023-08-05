@@ -1,0 +1,31 @@
+<% wdays = ["日", "月", "火", "水", "木", "金", "土"] %>
+<tr id="<%= dom_id time_card %>">
+  <td class="border border-gray-300"
+    ><%= time_card.date.strftime('%m月%d日') + "(#{wdays[time_card.date.wday]})" if time_card.date %>
+  </td>
+  <td class="border border-gray-300">
+    <% if time_card.start_time_scheduled and time_card.end_time_scheduled %>
+      <div class="flex flex-row">
+        <div><%= time_card.start_time_scheduled.strftime('%H:%M') %></div>
+        〜
+        <div><%= time_card.end_time_scheduled.strftime('%H:%M') %></div>
+      </div>
+    <% else %>
+      -
+    <% end %>
+  </td>
+  <td class="border border-gray-300">
+    <%= tc_form.time_field :start_time_actual %>〜
+    <%= tc_form.time_field :end_time_actual %>
+  </td>
+  <td class="border border-gray-300">
+    <%= tc_form.time_field :break_start_time %>〜
+    <%= tc_form.time_field :break_end_time %>
+  </td>
+  <td class="border border-gray-300">
+    <%= time_card.holiday_status %>
+  </td>
+  <td class="border border-gray-300">
+    <%= tc_form.text_field :comment %>
+  </td>
+</tr>

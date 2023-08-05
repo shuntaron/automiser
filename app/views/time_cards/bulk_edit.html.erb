@@ -1,2 +1,39 @@
-<h1>TimeCards#bulk_edit</h1>
-<p>Find me in app/views/time_cards/bulk_edit.html.erb</p>
+<div class="min-h-screen bg-gray-100 flex items-center justify-center">
+  <div class="w-11/12 lg:w-3/4 bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-xl font-bold mb-4">勤怠手動修正画面</h1>
+    <p class="text-green-500 mb-4"><%= notice %></p>
+    <p class="text-red-500 mb-4"><%= alert %></p>
+    
+    <%= form_with model: @time_cards, url: bulk_update_time_cards_path, method: :patch do |form| %>
+      <div class="mb-4 flex flex-row items-center justify-start">
+        <div class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 m-2 rounded">
+          <%= link_to "勤怠管理画面", time_cards_path %>
+        </div>
+        <div class="bg-cyan-500 hover:bg-cyan-700 text-white font-bold p-2 m-2 rounded">
+          <%= form.submit "更新" %>
+        </div>
+      </div>
+      <div id="time_cards">
+        <table class="w-full table-auto border-collapse border border-gray-300">
+          <thead>
+            <tr>
+              <th class="border border-gray-300">日付</th>
+              <th class="border border-gray-300">勤務予定</th>
+              <th class="border border-gray-300">勤務実績</th>
+              <th class="border border-gray-300">休憩</th>
+              <th class="border border-gray-300">休日</th>
+              <th class="border border-gray-300">コメント</th>
+            </tr>
+          </thead>
+          <tbody>
+              <% @time_cards.each_with_index do |time_card, index| %>
+                <%= form.fields_for "time_cards[]", time_card do |tc_form| %>
+                  <%= render "bulk_form", time_card: time_card, tc_form: tc_form, index: index %>
+                <% end %>
+              <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>
