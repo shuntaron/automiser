@@ -51,4 +51,8 @@ class TimeCardsController < ApplicationController
 
   def edit
   end
+  
+  def bulk_edit
+    @time_cards = TimeCard.all
+  end
 end
