@@ -14,6 +14,9 @@
       <div class="bg-green-500 hover:bg-green-700 text-white font-bold p-2 m-2 rounded">
         <%= link_to "勤怠実績自動登録", sync_data_time_cards_path, data: { turbo_method: :post }  %>
       </div>
+      <div class="bg-red-500 hover:bg-red-700 text-white font-bold p-2 m-2 rounded">
+        <%= link_to "勤怠情報削除", bulk_delete_time_cards_path, data: { turbo_method: :delete } %>
+      </div>
     </div>
     <div id="time_cards">
       <table class="w-full table-auto border-collapse border border-gray-300">
