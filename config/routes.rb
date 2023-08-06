@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post  :scrape
       get   :bulk_edit
       patch :bulk_update
+      post  :sync_data
     end
   end
 end

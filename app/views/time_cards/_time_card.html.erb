@@ -16,6 +16,7 @@
     <% if time_card.start_time_actual and time_card.end_time_actual %>
       <div class="flex flex-row">
         <div><%= time_card.start_time_actual.strftime('%H:%M') %></div>
+        〜
         <div><%= time_card.end_time_actual.strftime('%H:%M') %></div>
       </div>
     <% else %>
