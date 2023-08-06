@@ -80,7 +80,10 @@ class TimeCardsController < ApplicationController
         
         time_cards = TimeCard.all
         time_cards.each do |time_card|
-          if time_card.start_time_scheduled.present? && time_card.end_time_scheduled.present?
+          if time_card.start_time_actual.present? && time_card.end_time_actual.present?
+            page.fill("tr[data-date='#{time_card.date.strftime('%Y-%m-%d')}'] > td:nth-child(3) > input[type=time]:nth-child(1)", time_card.start_time_actual.strftime('%H:%M'))
+            page.fill("tr[data-date='#{time_card.date.strftime('%Y-%m-%d')}'] > td:nth-child(3) > input[type=time]:nth-child(2)", time_card.end_time_actual.strftime('%H:%M'))
+          elsif time_card.start_time_scheduled.present? && time_card.end_time_scheduled.present?
             page.fill("tr[data-date='#{time_card.date.strftime('%Y-%m-%d')}'] > td:nth-child(3) > input[type=time]:nth-child(1)", time_card.start_time_scheduled.strftime('%H:%M'))
             page.fill("tr[data-date='#{time_card.date.strftime('%Y-%m-%d')}'] > td:nth-child(3) > input[type=time]:nth-child(2)", time_card.end_time_scheduled.strftime('%H:%M'))
           end
