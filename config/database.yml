@@ -15,18 +15,18 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
-  socket: /tmp/mysql.sock
+  host: localhost
 
 development:
   <<: *default
-  database: automiser_app_development
+  database: timecard_app_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: automiser_app_test
+  database: timecard_app_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,6 +50,11 @@ test:
 #
 production:
   <<: *default
-  database: automiser_app_production
-  username: automiser_app
-  password: <%= ENV["AUTOMISER_APP_DATABASE_PASSWORD"] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>

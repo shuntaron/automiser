@@ -7,7 +7,7 @@ class TimeCardsController < ApplicationController
     require "playwright"
     TimeCard.delete_all
     Playwright.create(playwright_cli_executable_path: 'npx playwright') do |playwright|
-      playwright.chromium.launch(headless: false) do |browser|
+      playwright.chromium.launch do |browser|
         # 勤怠情報画面へアクセス
         page = browser.new_page
         page.goto(ENV["SCRAPE_URL"])
